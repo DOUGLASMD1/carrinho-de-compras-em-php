@@ -40,28 +40,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `carrinhoCompras`.`estado`
+-- Table `carrinhoCompras`.`carrinho`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`estado` (
-  `idestado` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  `uf` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idestado`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `carrinhoCompras`.`municipio`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`municipio` (
-  `idmunicipio` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NULL,
-  `estado_idestado` INT NOT NULL,
-  PRIMARY KEY (`idmunicipio`, `estado_idestado`),
-  INDEX `fk_municipio_estado1_idx` (`estado_idestado` ASC),
-  CONSTRAINT `fk_municipio_estado1`
-    FOREIGN KEY (`estado_idestado`)
-    REFERENCES `carrinhoCompras`.`estado` (`idestado`)
+CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`carrinho` (
+  `idcarrinho` INT NOT NULL AUTO_INCREMENT,
+  `cliente_cpf` INT NOT NULL,
+  PRIMARY KEY (`idcarrinho`, `cliente_cpf`),
+  INDEX `fk_carrinho_cliente1_idx` (`cliente_cpf` ASC),
+  CONSTRAINT `fk_carrinho_cliente1`
+    FOREIGN KEY (`cliente_cpf`)
+    REFERENCES `carrinhoCompras`.`cliente` (`cpf`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -126,22 +114,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`finalizaCompra` (
   `idfinalizaCompra` INT NOT NULL AUTO_INCREMENT,
-  `carrinho_idcarrinho` INT NOT NULL,
-  `municipio_idmunicipio` INT NOT NULL,
   `status` ENUM('AB', 'CL') NOT NULL,
-  PRIMARY KEY (`idfinalizaCompra`, `carrinho_idcarrinho`, `municipio_idmunicipio`),
-  INDEX `fk_confirmaCompra_carrinho1_idx` (`carrinho_idcarrinho` ASC),
-  INDEX `fk_confirmaCompra_municipio1_idx` (`municipio_idmunicipio` ASC),
-  CONSTRAINT `fk_confirmaCompra_carrinho1`
-    FOREIGN KEY (`carrinho_idcarrinho`)
-    REFERENCES `carrinhoCompras`.`carrinho` (`idcarrinho`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_confirmaCompra_municipio1`
-    FOREIGN KEY (`municipio_idmunicipio`)
-    REFERENCES `carrinhoCompras`.`municipio` (`idmunicipio`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`idfinalizaCompra`))
 ENGINE = InnoDB;
 
 
