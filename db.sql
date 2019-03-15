@@ -40,6 +40,34 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `carrinhoCompras`.`estado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`estado` (
+  `Uf` VARCHAR(5) NOT NULL,
+  `Nome` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`Uf`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `carrinhoCompras`.`municipio`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`municipio` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Codigo` INT NOT NULL,
+  `Nome` VARCHAR(100) NOT NULL,
+  `estado_Uf` VARCHAR(5) NOT NULL,
+  PRIMARY KEY (`Id`, `estado_Uf`),
+  INDEX `fk_municipio_estado1_idx` (`estado_Uf` ASC),
+  CONSTRAINT `fk_municipio_estado1`
+    FOREIGN KEY (`estado_Uf`)
+    REFERENCES `carrinhoCompras`.`estado` (`Uf`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `carrinhoCompras`.`carrinho`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`carrinho` (
@@ -114,10 +142,52 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`finalizaCompra` (
   `idfinalizaCompra` INT NOT NULL AUTO_INCREMENT,
+  `carrinho_idcarrinho` INT NOT NULL,
   `status` ENUM('AB', 'CL') NOT NULL,
-  PRIMARY KEY (`idfinalizaCompra`))
+  `municipio_Id` INT NOT NULL,
+  PRIMARY KEY (`idfinalizaCompra`, `carrinho_idcarrinho`, `municipio_Id`),
+  INDEX `fk_confirmaCompra_carrinho1_idx` (`carrinho_idcarrinho` ASC),
+  INDEX `fk_finalizaCompra_municipio1_idx` (`municipio_Id` ASC),
+  CONSTRAINT `fk_confirmaCompra_carrinho1`
+    FOREIGN KEY (`carrinho_idcarrinho`)
+    REFERENCES `carrinhoCompras`.`carrinho` (`idcarrinho`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_finalizaCompra_municipio1`
+    FOREIGN KEY (`municipio_Id`)
+    REFERENCES `carrinhoCompras`.`municipio` (`Id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+Insert into Estado (Uf, Nome) values ('AC', 'Acre');
+Insert into Estado (Uf, Nome) values ('AL', 'Alagoas');
+Insert into Estado (Uf, Nome) values ('AP', 'Amapá');
+Insert into Estado (Uf, Nome) values ('AM', 'Amazonas');
+Insert into Estado (Uf, Nome) values ('BA', 'Bahia');
+Insert into Estado (Uf, Nome) values ('CE', 'Ceará');
+Insert into Estado (Uf, Nome) values ('DF', 'Distrito Federal');
+Insert into Estado (Uf, Nome) values ('ES', 'Espírito Santo');
+Insert into Estado (Uf, Nome) values ('Goiás', 'GO', 5);
+Insert into Estado (Uf, Nome) values ('Maranhão', 'MA', 2);
+Insert into Estado (Uf, Nome) values ('Mato Grosso', 'MT', 5);
+Insert into Estado (Uf, Nome) values ('Mato Grosso do Sul', 'MS', 5);
+Insert into Estado (Uf, Nome) values ('Minas Gerais', 'MG', 3);
+Insert into Estado (Uf, Nome) values ('Pará', 'PA', 1);
+Insert into Estado (Uf, Nome) values ('Paraíba', 'PB', 2);
+Insert into Estado (Uf, Nome) values ('Paraná', 'PR', 4);
+Insert into Estado (Uf, Nome) values ('Pernambuco', 'PE', 2);
+Insert into Estado (Uf, Nome) values ('Piauí', 'PI', 2);
+Insert into Estado (Uf, Nome) values ('Rio de Janeiro', 'RJ', 3);
+Insert into Estado (Uf, Nome) values ('Rio Grande do Norte', 'RN', 2);
+Insert into Estado (Uf, Nome) values ('Rio Grande do Sul', 'RS', 4);
+Insert into Estado (Uf, Nome) values ('Rondônia', 'RO', 1);
+Insert into Estado (Uf, Nome) values ('Roraima', 'RR', 1);
+Insert into Estado (Uf, Nome) values ('Santa Catarina', 'SC', 4);
+Insert into Estado (Uf, Nome) values ('São Paulo', 'SP', 3);
+Insert into Estado (Uf, Nome) values ('Sergipe', 'SE', 2);
+Insert into Estado (Uf, Nome) values ('Tocantins', 'TO', 1);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
