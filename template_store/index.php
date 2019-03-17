@@ -19,9 +19,10 @@
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="index.html">Home</a></li>
-								<li><a href="shop.html">Produtos</a></li>
-								<li><a href="cart.html"><i class="icon-shopping-cart"></i> Carrinho </a></li>
+								<li class="active"><a href="index.php">Home</a></li>
+								<li><a href="shop.php">Produtos</a></li>
+								<li><a href="login.php"> Login/Cadastre-se </a></li>
+								<li><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
 							</ul>
 						</div>
 					</div>
@@ -278,34 +279,6 @@
 			</div>
 		</div>
 
-		
-		
-		<div id="colorlib-subscribe">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<div class="col-md-6 text-center">
-							<h2><i class="icon-paperplane"></i>Receba nossas ofertas</h2>
-						</div>
-						<div class="col-md-6">
-							<form class="form-inline qbstp-header-subscribe">
-								<div class="row">
-									<div class="col-md-12 col-md-offset-0">
-										<div class="form-group">
-											<input type="text" class="form-control" id="email" placeholder="Digite seu email">
-											<button type="submit" class="btn btn-primary">Increver-se</button>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		
 		<?php
 			require_once("footer.html")
 		?>
