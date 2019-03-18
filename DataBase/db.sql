@@ -22,8 +22,11 @@ CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`produto` (
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(100) NULL,
   `valor` FLOAT NOT NULL,
+  `imagem` INT NULL,
   PRIMARY KEY (`idproduto`))
 ENGINE = InnoDB;
+
+
 
 
 -- -----------------------------------------------------
