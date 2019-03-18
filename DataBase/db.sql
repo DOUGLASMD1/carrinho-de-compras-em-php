@@ -27,13 +27,11 @@ CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`produto` (
 ENGINE = InnoDB;
 
 
-
-
 -- -----------------------------------------------------
 -- Table `carrinhoCompras`.`cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`cliente` (
-  `cpf` INT NOT NULL,
+  `cpf` VARCHAR(30) NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
   `dataNascimento` DATE NULL,
   `email` VARCHAR(100) NOT NULL,
@@ -75,7 +73,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`carrinho` (
   `idcarrinho` INT NOT NULL AUTO_INCREMENT,
-  `cliente_cpf` INT NOT NULL,
+  `cliente_cpf` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`idcarrinho`, `cliente_cpf`),
   INDEX `fk_carrinho_cliente1_idx` (`cliente_cpf` ASC),
   CONSTRAINT `fk_carrinho_cliente1`
@@ -91,7 +89,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`carrinho` (
   `idcarrinho` INT NOT NULL AUTO_INCREMENT,
-  `cliente_cpf` INT NOT NULL,
+  `cliente_cpf` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`idcarrinho`, `cliente_cpf`),
   INDEX `fk_carrinho_cliente1_idx` (`cliente_cpf` ASC),
   CONSTRAINT `fk_carrinho_cliente1`
@@ -107,7 +105,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`carrinho` (
   `idcarrinho` INT NOT NULL AUTO_INCREMENT,
-  `cliente_cpf` INT NOT NULL,
+  `cliente_cpf` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`idcarrinho`, `cliente_cpf`),
   INDEX `fk_carrinho_cliente1_idx` (`cliente_cpf` ASC),
   CONSTRAINT `fk_carrinho_cliente1`
@@ -163,7 +161,6 @@ CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`finalizaCompra` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 Insert into estado (Uf, Nome) values ('AC', 'Acre');
 Insert into estado (Uf, Nome) values ('AL', 'Alagoas');
 Insert into estado (Uf, Nome) values ('AP', 'Amapá');
@@ -191,7 +188,6 @@ Insert into estado (Uf, Nome) values ('SC', 'Santa Catarina');
 Insert into estado (Uf, Nome) values ('SP', 'São Paulo');
 Insert into estado (Uf, Nome) values ('SE', 'Sergipe');
 Insert into estado (Uf, Nome) values ('TO', 'Tocantins');
-
 
 
 
