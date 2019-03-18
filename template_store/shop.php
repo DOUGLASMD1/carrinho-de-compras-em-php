@@ -1,9 +1,11 @@
+<?php
+	require_once 'head.html';
+	include_once '../App/Controller/ProdutoController.php';
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<?php
-			include_once("head.html")
-		?>
 	</head>
 	<body>
 		
@@ -32,7 +34,7 @@
 		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/cover-img-1.jpg);">
+			   	<li style="background-image: url(images/5.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
@@ -54,233 +56,31 @@
 				<div class="row">
 					<div class="col-md-10 col-md-push-2">
 						<div class="row row-pb-lg">
-							<div class="col-md-4 text-center">
+						<?php
+							$produtos = ProdutoController::allProdutos();
+							foreach ($produtos as $produto) {
+								echo 
+							'<div class="col-md-4 text-center">
 								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-5.jpg);">
-										<p class="tag"><span class="new">novo</span></p>
+									<div class="product-img" style="background-image: url(images/'.$produto[4].'.jpg'.');"
+										<p class="tag"><span class="new"></span></p>
 										<div class="cart">
 											<p>
 												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+												<!--<span><a href="product-detail.html"><i class="icon-eye"></i></a></span>--> 
+												<!--<span><a href="#"><i class="icon-heart3"></i></a></span>-->
+												<!--<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>-->
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$300.00</span></p>
+										<h3>'.$produto[1].'</h3>
+										<p class="price"><span>'.round($produto[3],2).'</span></p>
 									</div>
 								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-6.jpg);">
-										<p class="tag"><span class="sale">desconto</span></p>
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$199.00</span> <span class="sale">$300.00</span> </p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-7.jpg);">
-										<p class="tag"><span class="new">novo</span></p>
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$300.00</span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-8.jpg);">
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$300.00</span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-9.jpg);">
-										<p class="tag"><span class="sale">desconto</span></p>
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$199.00</span> <span class="sale">$300.00</span> </p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-10.jpg);">
-										<p class="tag"><span class="new">novo</span></p>
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$300.00</span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-11.jpg);">
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$300.00</span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-12.jpg);">
-										<p class="tag"><span class="new">novo</span></p>
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$300.00</span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-13.jpg);">
-										<p class="tag"><span class="new">novo</span></p>
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$300.00</span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-14.jpg);">
-										<p class="tag"><span class="new">novo</span></p>
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$300.00</span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-15.jpg);">
-										<p class="tag"><span class="new">novo</span></p>
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$300.00</span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/item-16.jpg);">
-										<p class="tag"><span class="new">novo</span></p>
-										<div class="cart">
-											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-												<span><a href="#"><i class="icon-heart3"></i></a></span>
-												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-											</p>
-										</div>
-									</div>
-									<div class="desc">
-										<h3><a href="product-detail.html">Floral Dress</a></h3>
-										<p class="price"><span>$300.00</span></p>
-									</div>
-								</div>
-							</div>
-						</div>
+							</div>';	
+							}
+						?>	
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="pagination">
