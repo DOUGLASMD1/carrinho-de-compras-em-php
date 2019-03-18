@@ -54,7 +54,7 @@
 		<div class="colorlib-shop">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-10 col-md-push-2">
+					<div class="col-md-8 col-md-push-2">
 						<div class="row row-pb-lg">
 						<?php
 							$produtos = ProdutoController::allProdutos();
