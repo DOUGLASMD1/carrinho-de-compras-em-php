@@ -71,7 +71,45 @@
 				</div>
 				<div class="row">
 					<div class="col-md-7">
-						
+						<form method="post" class="colorlib-form">
+							<h2>Billing Details</h2>
+		              	<div class="row">
+			               <div class="col-md-12">
+			                  <div class="form-group">
+			                  	<label for="country">Estado</label>
+			                    <div class="form-field">
+			                     	<i class="icon icon-arrow-down3"></i>
+			                     	<select name="id_estado" id="id_estado" required>
+										<option value="">Selecione...</option>
+										<?php 
+											$result_estado = "SELECT * FROM estado ORDER BY Nome";
+											$resultado_estado = mysqli_query($link, $result_estado);
+											while($row_estado = mysqli_fetch_assoc($resultado_estado)){
+												echo '<option value="'.$row_estado['Uf'].'">'.$row_estado['Nome'].'</option>';
+												} 
+										?>
+									</select>			                 
+			                    </div>
+			                </div>
+			                  <div class="form-group">
+			                  	<label for="municipio">Municipio</label>
+			                     <div class="form-field">
+			                     	<i class="icon icon-arrow-down3"></i>
+			                     	<select name="id_estado" id="id_estado" required>
+										<option value="">Selecione...</option>
+										<?php 
+											$result_municipio = "SELECT * FROM municipio ORDER BY Nome";
+											$resultado_municipio = mysqli_query($link, $result_estado);
+											while($row_municipio = mysqli_fetch_assoc($resultado_municipio)){
+												echo '<option value="'.$row_municipio['Id'].'">'.$row_municipio['Nome'].'</option>';
+												} 
+										?>
+									</select>			                 
+			                     </div>
+			                  </div>
+			               </div>
+			            </div>
+		            </form>
 					</div>
 					<div class="col-md-5">
 						<div class="cart-detail">
