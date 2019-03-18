@@ -1,10 +1,10 @@
 <?php
 class Conexao {
-    private $usuario = '';
+    private $usuario = 'root';
     private $senha = '';
 
     public function conexao(){
-        return new PDO('mysql:host=localhost;dbname=sistema_alunos', $this->usuario, $this->senha); 
+        return new PDO('mysql:host=localhost;dbname=carrinhoCompras; charset=utf8', $this->usuario, $this->senha); 
     }
 }   
 ?>
