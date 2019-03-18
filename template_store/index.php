@@ -32,7 +32,7 @@
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/6.jpg);">
+			   	<li style="background-image: url(images/img_bg_1.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
@@ -49,7 +49,7 @@
 				   		</div>
 			   		</div>
 			   	</li>
-			   	<li style="background-image: url(images/7.jpg);">
+			   	<li style="background-image: url(images/img_bg_2.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
@@ -66,7 +66,7 @@
 				   		</div>
 			   		</div>
 			   	</li>
-			   	<li style="background-image: url(images/8.jpg);">
+			   	<li style="background-image: url(images/img_bg_3.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
@@ -88,8 +88,12 @@
 		</aside>
 
 		<?php
-			include_once("footer.html");
+			include_once("footer.html")
 		?>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
 
 	</body>
