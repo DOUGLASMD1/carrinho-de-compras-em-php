@@ -1,10 +1,16 @@
+<?php
+	session_start();
+	include_once 'head.html';
+	include_once '../App/Controller/ClienteController.php';
+
+	$user = new ClienteController();
+
+	$result = $user->isLoggedIn();
+	
+?>
+
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<?php
-			require_once("head.html")
-		?>
-	</head>
 	<body>
 		
 	<div class="colorlib-loader"></div>
@@ -21,8 +27,16 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li><a href="shop.php">Produtos</a></li>
-								<li><a href="login.php"> Login/Cadastre-se </a></li>
-								<li class="active"><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
+								<?php
+									if ($result == true) {
+
+										echo '
+											<li class="active"><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
+											<li><a href="../App/Controller/logout.php"> Sair </a></li>';
+									}else{
+										echo '<li><a href="login.php"> Login/Cadastre-se </a></li>';
+									}
+								?>
 							</ul>
 						</div>
 					</div>
