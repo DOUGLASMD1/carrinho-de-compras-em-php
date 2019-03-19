@@ -7,7 +7,7 @@
 		$result = $cliente->cadastrarCliente($_POST);
 
 		if ($result){
-    		header('Location: ../../temp/index.php');
+    		header('Location: ../../template_store/index.php');
 		}else{
     		echo "Erro ao cadastrar";
     		$result->errorInfo();
