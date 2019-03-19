@@ -52,7 +52,7 @@
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Seus Produtos</h1>
-				   					<h2 class="bread"><span><a href="index.php">Home</a></span> <span><a href="shop.php">Produto</a></span> <span>Seus Produtos</span></h2>
+				   					<h2 class="bread"><span><a href="index.php">Home</a></span> <span>Seus Produtos</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
