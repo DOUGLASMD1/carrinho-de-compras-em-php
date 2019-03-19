@@ -9,7 +9,7 @@
 		if ($result){
 
 			echo "
-				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=../../template_store/index.php'>
+				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=../../template_store/login.php'>
 				<script type=\"text/javascript\">
 					alert(\"Cadastro realizado com sucesso!\");
 				</script>
