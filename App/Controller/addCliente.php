@@ -7,6 +7,7 @@
 		$result = $cliente->cadastrarCliente($_POST);
 
 		if ($result){
+
 			echo "
 				<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=../../template_store/index.php'>
 				<script type=\"text/javascript\">
