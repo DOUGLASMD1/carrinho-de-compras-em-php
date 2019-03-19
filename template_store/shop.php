@@ -42,6 +42,7 @@
 								<li class="active"><a href="shop.php">Produtos</a></li>
 								<?php
 									if ($result == true) {
+										echo '<li><a href="list.php"> Seus Produtos </a></li>';
 
 										echo '
 											<li><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
