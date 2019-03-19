@@ -26,8 +26,6 @@
         }
 
         public function login($email, $senha) {
-            var_dump($email, $senha);
-            
             $conexao = new Conexao();
             $conexao = $conexao->conexao();  
             $stmt = $conexao->prepare("SELECT cpf, email, senha, nome FROM cliente WHERE email = :email AND senha = :senha");
