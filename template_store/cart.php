@@ -32,7 +32,7 @@
 		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/cover-img-1.jpg);">
+			   	<li style="background-image: url(images/5.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
@@ -73,7 +73,7 @@
 					<div class="col-md-10 col-md-offset-1">
 						<div class="product-name">
 							<div class="one-forth text-center">
-								<span>Detales dos produtos</span>
+								<span>Detalhes dos produtos</span>
 							</div>
 							<div class="one-eight text-center">
 								<span>Preço</span>
@@ -86,35 +86,6 @@
 							</div>
 							<div class="one-eight text-center">
 								<span>Remover</span>
-							</div>
-						</div>
-						<div class="product-cart">
-							<div class="one-forth">
-								<div class="product-img" style="background-image: url(images/item-6.jpg);">
-								</div>
-								<div class="display-tc">
-									<h3>Nome Produto</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$68.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$120.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
 							</div>
 						</div>
 						<div class="product-cart">

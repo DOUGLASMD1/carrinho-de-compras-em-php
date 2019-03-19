@@ -1,6 +1,20 @@
 <?php
+	//session_start();
 	require_once 'head.html';
 	include_once '../App/Controller/ProdutoController.php';
+	include_once '../App/Controller/CarrinhoController.php';
+	
+	if (isset($_POST['enviar'])){
+		var_dump ($_POST);
+		exit;
+		$cpf = '70072805285';
+		$carrinho = new CarrinhoController();
+		$dados = $_POST;
+		array_push($dados, $cpf);
+		$carrinho->addCarrinho($_POST);
+		exit;
+		//header('Location: shop.php');
+	}	
 ?>
 
 <!DOCTYPE HTML>
@@ -59,18 +73,18 @@
 						<?php
 							$produtos = ProdutoController::allProdutos();
 							foreach ($produtos as $produto) {
-								echo 
+								echo
 							'<div class="col-md-4 text-center">
 								<div class="product-entry">
 									<div class="product-img" style="background-image: url(images/'.$produto[4].'.jpg'.');"
 										<p class="tag"><span class="new"></span></p>
 										<div class="cart">
 											<p>
-												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<!--<span><a href="product-detail.html"><i class="icon-eye"></i></a></span>--> 
-												<!--<span><a href="#"><i class="icon-heart3"></i></a></span>-->
-												<!--<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>-->
-											</p>
+												<form method="POST">
+												<input style="visibility:hidden" type="number" name="idproduto" value = '.$produto[0].'>	
+													<button type="submit" value="enviar">Carrinho</button>
+												</form>
+												</p>
 										</div>
 									</div>
 									<div class="desc">

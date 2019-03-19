@@ -79,8 +79,8 @@
 			                  	<label for="country">Estado</label>
 			                    <div class="form-field">
 			                     	<i class="icon icon-arrow-down3"></i>
-			                     	<select name="id_estado" id="id_estado" required>
-										<option value="">Selecione...</option>
+			                     	<select class="form-control" name="id_estado" id="id_estado" required>
+										<option value=""> Selecione...</option>
 										<?php 
 											$result_estado = "SELECT * FROM estado ORDER BY Nome";
 											$resultado_estado = mysqli_query($link, $result_estado);
@@ -95,7 +95,7 @@
 			                  	<label for="municipio">Municipio</label>
 			                     <div class="form-field">
 			                     	<i class="icon icon-arrow-down3"></i>
-			                     	<select name="id_estado" id="id_estado" required>
+			                     	<select class="form-control" name="id_estado" id="id_estado" required>
 										<option value="">Selecione...</option>
 										<?php 
 											$result_municipio = "SELECT * FROM municipio ORDER BY Nome";
