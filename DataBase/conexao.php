@@ -8,22 +8,21 @@
 	    /**
 	 	* Conecta com o MySQL usando PDO
 	 	*/
-		function conexao(){
-	    	$PDO = new PDO('mysql:host=localhost;dbname=carrinhoCompras; charset=utf8', $this->usuario, $this->senha);
-	    	return $PDO;
+		public function conexao(){
+	    	return new PDO('mysql:host=localhost;dbname=carrinhoCompras; charset=utf8', $this->usuario, $this->senha);
 		}
 
 		/**
 		 * Cria o hash da senha, usando MD5 e SHA-1
 		 */
-		function make_hash($str){
+		public function make_hash($str){
 		    return sha1(md5($str));
 		}	 
 	 
 		/**
 		 * Verifica se o usuário está logado
 		 */
-		function isLoggedIn(){
+		public function isLoggedIn(){
 		    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true){
 		        return false;
 		    }

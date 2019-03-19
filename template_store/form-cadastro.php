@@ -1,5 +1,5 @@
 
-		<form method="post" class="colorlib-form" action="../App/Controller/ClienteController.php">
+		<form method="POST" class="colorlib-form" action="../App/Controller/addCliente.php">
 			<h2>Cadastre-se</h2>
 		       	<div class="row">
 			        <div class="col-md-12">
@@ -13,8 +13,8 @@
 								<input type="Date" name="dataNascimento" id="dataNascimento" class="form-control" placeholder="Digite sua data de nascimento">
 							</div>
 							<div class="col-md-6">
-								<label for="CPF"> CPF </label>
-								<input type="text" class="form-control" id="CPF" name="CPF" placeholder="Digite seu CPF">
+								<label for="cpf"> CPF </label>
+								<input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite seu CPF">
 							</div>
 						</div>
 						<div class="form-group">
@@ -29,7 +29,7 @@
 						</div>
 						<div class="form-group">
 							<div align="center">
-								<button type="submit" class="btn btn-primary">
+								<button type="submit" name="cadastrar" class="btn btn-primary">
    									Cadastrar
    								</button>
 							</div>
