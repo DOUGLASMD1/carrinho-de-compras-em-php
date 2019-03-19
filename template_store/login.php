@@ -46,37 +46,17 @@
 		</nav>
 
 			<div class="row">
-				<div class="container" style="width: 30%">
+				<div class="container" style="width: 40%">
 					<?php
 						include_once("form-login.php")
 					?>
 				</div>
 			</div>
-
+			<?php
+				include_once 'footer.html'
+			?>
 		</div>
-
-		<footer id="colorlib-footer" role="contentinfo">
-
-			<div class="copy">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<p>
-							<span class="block">
-								Copyright &copy;
-								<script>document.write(new Date().getFullYear());</script> 
-								Todos os direitos reservados bla bla bla by 
-								<a href="#" target="_blank">Grupo A</a>
-							</span> 
-						</p>
-					</div>
-				</div>
-			</div>
-		</footer>
 	</div>
-
-	<?php
-		include_once 'footer.html'
-	?>
 	
 	</body>
 </html>

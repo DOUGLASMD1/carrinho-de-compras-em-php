@@ -49,14 +49,11 @@
 						include_once "form-cadastro.php";
 					?>
 				</div>
+
+				<?php
+					include_once "footer.html";
+				?>
 			</div>
-
-		</div>
-
-		<?php
-			include_once "footer.html";
-		?>
-		
 	</div>
 	
 	</body>

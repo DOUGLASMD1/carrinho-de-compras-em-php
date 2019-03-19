@@ -11,14 +11,7 @@
 
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<?php
-			require_once("head.html")
-		?>
-	</head>
 	<body>
-		
-	<div class="colorlib-loader"></div>
 
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation">
@@ -197,9 +190,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-		
 		</div>
 
 		<?php

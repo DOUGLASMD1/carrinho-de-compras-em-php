@@ -23,8 +23,7 @@
 
 <!DOCTYPE HTML>
 <html>
-	<head>
-	</head>
+	
 	<body>
 		
 	<div class="colorlib-loader"></div>
@@ -82,51 +81,50 @@
 				<div class="row">
 					<div class="col-md-8 col-md-push-2">
 						<div class="row row-pb-lg">
-						<?php
-							$produtos = ProdutoController::allProdutos();
-							foreach ($produtos as $produto) {
-								echo
-							'<div class="col-md-4 text-center">
-								<div class="product-entry">
-									<div class="product-img" style="background-image: url(images/'.$produto[4].'.jpg'.');"
-										<p class="tag"><span class="new"></span></p>
-										<div class="cart">
-											<p>
-												<form method="POST">
-												<input style="visibility:hidden" type="number" name="idproduto" value = '.$produto[0].'>	
-													<button type="submit" value="enviar">Carrinho</button>
-												</form>
-												</p>
+							<?php
+								$produtos = ProdutoController::allProdutos();
+								foreach ($produtos as $produto) {
+									echo
+								'<div class="col-md-4 text-center">
+									<div class="product-entry">
+										<div class="product-img" style="background-image: url(images/'.$produto[4].'.jpg'.');"
+											<p class="tag"><span class="new"></span></p>
+											<div class="cart">
+												<p>
+													<form method="POST">
+													<input style="visibility:hidden" type="number" name="idproduto" value = '.$produto[0].'>	
+														<button type="submit" value="enviar">Carrinho</button>
+													</form>
+													</p>
+											</div>
+										</div>
+										<div class="desc">
+											<h3>'.$produto[1].'</h3>
+											<p class="price"><span>'.round($produto[3],2).'</span></p>
 										</div>
 									</div>
-									<div class="desc">
-										<h3>'.$produto[1].'</h3>
-										<p class="price"><span>'.round($produto[3],2).'</span></p>
-									</div>
+								</div>';	
+								}
+							?>	
+							<div class="row">
+								<div class="col-md-12">
+									<ul class="pagination">
+										<li class="disabled"><a href="#">&laquo;</a></li>
+										<li class="active"><a href="#">1</a></li>
+										<li><a href="#">&raquo;</a></li>
+									</ul>
 								</div>
-							</div>';	
-							}
-						?>	
-						<div class="row">
-							<div class="col-md-12">
-								<ul class="pagination">
-									<li class="disabled"><a href="#">&laquo;</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">&raquo;</a></li>
-								</ul>
 							</div>
 						</div>
 					</div>
-					
+				</div>
+
+				<?php
+					include_once("footer.html");
+				?>
 			</div>
+
 		</div>
-
-		<?php
-			include_once("footer.html");
-		?>
-	</div>
-
-
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
