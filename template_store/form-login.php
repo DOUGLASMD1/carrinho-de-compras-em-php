@@ -1,5 +1,28 @@
+		
+		<?php
+			include_once '../DataBase/conexao.php';
+			include_once '../App/Controller/ClienteController.php';
 
-		<form align="center" method="post" class="colorlib-form" action="../App/Controller/check_login.php">
+			$user = new ClienteController();
+
+			if (isset($_POST['enviar'])) {
+				$email = trim($_POST['email']);
+				$senha = trim(md5($_POST['senha']));
+				if ($user->login($email, $senha)) {
+					header('Location: shop.php');
+					exit;
+				}else{
+					echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL= login.php'>
+							<script type=\"text/javascript\">
+								alert(\"Senha ou email incorretos!\");
+							</script>
+						";
+				}
+			}
+		?>
+
+
+		<form align="center" method="POST" class="colorlib-form" action="">
 			<h2>Login</h2>
 		       	<div class="row">
 			        <div class="col-md-12">
@@ -21,9 +44,7 @@
 								<br>
 									<label> <a href="cadastro.php"> Cadastre-se </a> </label>
 								</div>
-								<button type="submit" class="btn btn-primary">
-   									Entrar
-   								</button>
+								<input class="btn btn-primary" type="submit" name="enviar">
 							</div>
 						</div>
    					</div>

@@ -24,6 +24,37 @@
             $result =  $stmt->execute();
             return $result;
         }
+
+        public function login($email, $senha) {
+            var_dump($email, $senha);
+            
+            $conexao = new Conexao();
+            $conexao = $conexao->conexao();  
+            $stmt = $conexao->prepare("SELECT cpf, email, senha, nome FROM cliente WHERE email = :email AND senha = :senha");
+            $stmt->execute(array('email' => $email, 'senha' => $senha));
+            if ($stmt->rowcount() > 0) {
+                $result = $stmt->fetch();
+                $_SESSION['logged_in'] = true;
+                $_SESSION['user_email'] = $result['email'];
+                $_SESSION['user_cpf'] = $result['cpf'];
+                $_SESSION['user_nome'] = $result['nome'];
+                return true;
+            }else {
+                return false;
+            }
+        }
+
+        public function logout(){
+            session_destroy();
+        }
+
+        public function isLoggedIn(){
+            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+                return true;
+            }
+            return false;
+        }
+
     }
 
 ?>

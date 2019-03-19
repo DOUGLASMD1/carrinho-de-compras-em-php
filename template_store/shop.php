@@ -1,9 +1,13 @@
 <?php
-	//session_start();
+	session_start();
 	require_once 'head.html';
 	include_once '../App/Controller/ProdutoController.php';
 	include_once '../App/Controller/CarrinhoController.php';
+	include_once '../App/Controller/ClienteController.php';
 	
+	$user = new ClienteController();
+	$result = $user->isLoggedIn();
+
 	if (isset($_POST['enviar'])){
 		var_dump ($_POST);
 		exit;
@@ -37,8 +41,16 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li class="active"><a href="shop.php">Produtos</a></li>
-								<li><a href="login.php"> Login/Cadastre-se </a></li>
-								<li><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
+								<?php
+									if ($result == true) {
+
+										echo '
+											<li><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
+											<li><a href="../App/Controller/logout.php"> Sair </a></li>';
+									}else{
+										echo '<li><a href="login.php"> Login/Cadastre-se </a></li>';
+									}
+								?>
 							</ul>
 						</div>
 					</div>

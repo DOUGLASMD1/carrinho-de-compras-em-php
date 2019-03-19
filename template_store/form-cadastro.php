@@ -29,9 +29,11 @@
 						</div>
 						<div class="form-group">
 							<div align="center">
+								<label> <a href="login.php"> Login </a> </label> <br>
 								<button type="submit" name="cadastrar" class="btn btn-primary">
    									Cadastrar
    								</button>
+
 							</div>
 						</div>
    					</div>
