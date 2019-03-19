@@ -6,6 +6,6 @@
 	 
 	session_destroy();
 	 
-	header('Location: ../../template_store/index.php');
+	header('Location: ../../template_store/login.php');
 
 ?>
