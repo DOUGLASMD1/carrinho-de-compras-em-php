@@ -45,7 +45,7 @@
 		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/3.jpg);">
+			   	<li style="background-image: url(images/11.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
@@ -66,24 +66,6 @@
 			<div class="container">
 				<div class="row row-pb-md">
 					<div class="col-md-10 col-md-offset-1">
-						<div class="process-wrap">
-							<div class="process text-center active">
-								<p><span>01</span></p>
-								<h3>Carrinho de compras</h3>
-							</div>
-							<div class="process text-center">
-								<p><span>02</span></p>
-								<h3> Pagamento </h3>
-							</div>
-							<div class="process text-center">
-								<p><span>03</span></p>
-								<h3>Finalizado</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row row-pb-md">
-					<div class="col-md-10 col-md-offset-1">
 						<div class="product-name">
 							<div class="one-forth text-center">
 								<span>Detalhes dos produtos</span>
@@ -96,9 +78,6 @@
 							</div>
 							<div class="one-eight text-center">
 								<span>Total</span>
-							</div>
-							<div class="one-eight text-center">
-								<span>Remover</span>
 							</div>
 						</div>
 						<div class="product-cart">
@@ -126,11 +105,6 @@
 									<span class="price">$120.00</span>
 								</div>
 							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
-							</div>
 						</div>
 						<div class="product-cart">
 							<div class="one-forth">
@@ -155,42 +129,9 @@
 									<span class="price">$120.00</span>
 								</div>
 							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-						<div class="total-wrap">
-							<div class="row">
-								<div class="col-md-8">
-									<form action="#">
-										<div class="row form-group">
-										</div>
-									</form>
-								</div>
-								<div class="col-md-3 col-md-push-1 text-center">
-									<div class="total">
-										<div class="sub">
-											<p><span>Subtotal:</span> <span>$200.00</span></p>
-											<p><span>Desconto:</span> <span>$45.00</span></p>
-										</div>
-										<div class="grand-total">
-											<p><span><strong>Total:</strong></span> <span>$450.00</span></p>
-										</div>
-									</div>
-
-									<p><a href="checkout.php" class="btn btn-primary"> Proximo </a></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 
 		<?php
