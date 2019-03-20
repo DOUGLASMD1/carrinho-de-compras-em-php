@@ -1,5 +1,5 @@
 
-		<form method="POST" class="colorlib-form" action="../App/Controller/addCliente.php">
+		<form method="POST" class="colorlib-form" action="../App/Controller/addCliente.php"style="background-color: #808080;">
 			<h2>Cadastre-se</h2>
 		       	<div class="row">
 			        <div class="col-md-12">

@@ -46,7 +46,7 @@
 		</nav>
 
 			<div class="row">
-				<div class="container" style="width: 40%">
+				<div class="container" style="width: 40%;  background-color: #808080;">
 					<?php
 						include_once("form-login.php")
 					?>

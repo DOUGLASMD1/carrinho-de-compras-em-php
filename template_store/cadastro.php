@@ -44,7 +44,7 @@
 		</nav>
 
 			<div class="row">
-				<div class="container" style="width: 50%">
+				<div class="container" style="width: 50%; background-color: #808080;">
 					<?php
 						include_once "form-cadastro.php";
 					?>

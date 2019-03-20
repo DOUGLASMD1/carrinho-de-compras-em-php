@@ -22,7 +22,7 @@
 		?>
 
 
-		<form align="center" method="POST" class="colorlib-form" action="">
+		<form align="center" method="POST" class="colorlib-form" action="" style="background-color: #808080;">
 			<h2>Login</h2>
 		       	<div class="row">
 			        <div class="col-md-12">
