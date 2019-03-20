@@ -1,11 +1,19 @@
 <?php
 	session_start();
 	include_once 'head.html';
+	include_once '../DataBase/conexao.php';
 	include_once '../App/Controller/ClienteController.php';
 
 	$user = new ClienteController();
-
 	$result = $user->isLoggedIn();
+
+	$conn = new Conexao();
+	$conn = $conn->conexao();
+	$stmt = $conn->prepare('SELECT * FROM estado');
+	
+	$stmt->execute();
+	
+	$resultado_estados = $stmt->fetchAll();
 	
 ?>
 
@@ -46,7 +54,7 @@
 		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/cover-img-1.jpg);">
+			   	<li style="background-image: url(images/3.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
@@ -86,7 +94,7 @@
 				<div class="row">
 					<div class="col-md-7">
 						<form method="post" class="colorlib-form">
-							<h2>Billing Details</h2>
+							<h2>Endereço para entrega</h2>
 		              	<div class="row">
 			               <div class="col-md-12">
 			                  <div class="form-group">
@@ -95,31 +103,33 @@
 			                     	<i class="icon icon-arrow-down3"></i>
 			                     	<select class="form-control" name="id_estado" id="id_estado" required>
 										<option value=""> Selecione...</option>
-										<?php 
-											$result_estado = "SELECT * FROM estado ORDER BY Nome";
-											$resultado_estado = mysqli_query($link, $result_estado);
-											while($row_estado = mysqli_fetch_assoc($resultado_estado)){
-												echo '<option value="'.$row_estado['Uf'].'">'.$row_estado['Nome'].'</option>';
-												} 
-										?>
+										 
+											<?php foreach( $resultado_estados as $row ) { 
+												echo '<option value="'.$row['Uf'].'">'.$row['Nome'].'</option>';
+											} ?>
+
 									</select>			                 
 			                    </div>
 			                </div>
 			                  <div class="form-group">
-			                  	<label for="municipio">Municipio</label>
+			                  	<label for="id_cidade">Municipio</label>
 			                     <div class="form-field">
 			                     	<i class="icon icon-arrow-down3"></i>
-			                     	<select class="form-control" name="id_estado" id="id_estado" required>
+			                     	<select class="form-control" name="id_cidade" id="id_cidade" required>
 										<option value="">Selecione...</option>
-										<?php 
-											$result_municipio = "SELECT * FROM municipio ORDER BY Nome";
-											$resultado_municipio = mysqli_query($link, $result_estado);
-											while($row_municipio = mysqli_fetch_assoc($resultado_municipio)){
-												echo '<option value="'.$row_municipio['Id'].'">'.$row_municipio['Nome'].'</option>';
-												} 
-										?>
 									</select>			                 
 			                     </div>
+
+			                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+								<script type="text/javascript">
+									$('#id_estado').change(function (){
+										var valor = document.getElementById("id_estado").value;
+										$.get("exibe_cidade.php?search=" + valor, function (data) {
+											$("#id_cidade").find("option").remove();
+											$('#id_cidade').append(data);
+										});
+									});
+								</script>
 			                  </div>
 			               </div>
 			            </div>
@@ -182,7 +192,7 @@
 		</div>
 
 		<?php
-			require_once("footer.html")
+			include_once 'footer.html';
 		?>
 	</div>
 
