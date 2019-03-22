@@ -10,4 +10,9 @@ class ListController {
     }
 }
 
+/* SELECT finalizaCompra.carrinho_idcarrinho, carrinho.cliente_cpf, produto.idproduto
+FROM ((carrinho_idcarrinho
+INNER JOIN carrinho ON )
+INNER JOIN produto ON );*/
+
 ?>
