@@ -6,19 +6,7 @@
 	include_once '../App/Controller/ClienteController.php';
 	
 	$user = new ClienteController();
-	$result = $user->isLoggedIn();
-
-	if (isset($_POST['enviar'])){
-		var_dump ($_POST);
-		exit;
-		$cpf = '70072805285';
-		$carrinho = new CarrinhoController();
-		$dados = $_POST;
-		array_push($dados, $cpf);
-		$carrinho->addCarrinho($_POST);
-		exit;
-		//header('Location: shop.php');
-	}	
+	$result = $user->isLoggedIn();	
 ?>
 
 <!DOCTYPE HTML>
@@ -92,11 +80,8 @@
 											<p class="tag"><span class="new"></span></p>
 											<div class="cart">
 												<p>
-													<form method="POST">
-													<input style="visibility:hidden" type="number" name="idproduto" value = '.$produto[0].'>	
-														<button type="submit" value="enviar">Carrinho</button>
-													</form>
-													</p>
+													<span class="addtocart"><a href="../App/Controller/addCarrinho.php?produto='.$produto[0].'"><i class="icon-shopping-cart"></i></a></span> 
+												</p>
 											</div>
 										</div>
 										<div class="desc">

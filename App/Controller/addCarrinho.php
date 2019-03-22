@@ -1,0 +1,31 @@
+<?php
+session_start();
+include_once '../../DataBase/conexao.php';
+include_once 'ClienteController.php';
+
+$user = new ClienteController();
+$result = $user->isLoggedIn();
+
+if($result == true){
+    $produto = $_GET['produto'];
+
+    $conexao = new Conexao();
+    $conexao = $conexao->conexao();
+    $stmt = $conexao->prepare("INSERT INTO carrinho(cliente_cpf) VALUES(:cpfCliente);");
+    $stmt->bindParam(':cpfCliente', $_SESSION['user_cpf']);
+    $stmt->execute();
+    $carrinhoId = $conexao->lastInsertId();
+    
+    $stmt = $conexao->prepare("INSERT INTO carrinho_has_produto(carrinho_idcarrinho, produto_idproduto) VALUES(:carrinho, :produto);");
+    $stmt->bindParam(':carrinho', $carrinhoId);
+    $stmt->bindParam(':produto', $produto);
+    $stmt->execute();
+    $stmt = null;
+    
+    header('Location: ../../template_store/shop.php'); 
+}else{
+    header('Location: ../../template_store/login.php'); 
+}
+
+
+?>
