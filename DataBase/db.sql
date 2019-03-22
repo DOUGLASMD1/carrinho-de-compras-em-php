@@ -34,13 +34,14 @@ ENGINE = InnoDB;
 -- Table `carrinhoCompras`.`cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`cliente` (
-  `cpf` VARCHAR(30) NOT NULL COMMENT '',
-  `nome` VARCHAR(100) NOT NULL COMMENT '',
-  `dataNascimento` VARCHAR(10) NULL COMMENT '',
-  `email` VARCHAR(100) NOT NULL COMMENT '',
-  `senha` VARCHAR(255) NOT NULL COMMENT '',
-  PRIMARY KEY (`cpf`)  COMMENT '')
-ENGINE = InnoDB;
+  `cpf` VARCHAR(30) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
+  `dataNascimento` VARCHAR(10) NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `senha` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`cpf`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC))
+ENGINE = InnoDB
 
 
 -- -----------------------------------------------------
@@ -123,11 +124,12 @@ ENGINE = InnoDB;
 -- Table `carrinhoCompras`.`carrinho_has_produto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`carrinho_has_produto` (
-  `carrinho_idcarrinho` INT NOT NULL COMMENT '',
-  `produto_idproduto` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`carrinho_idcarrinho`, `produto_idproduto`)  COMMENT '',
-  INDEX `fk_carrinho_has_produto_produto1_idx` (`produto_idproduto` ASC)  COMMENT '',
-  INDEX `fk_carrinho_has_produto_carrinho1_idx` (`carrinho_idcarrinho` ASC)  COMMENT '',
+  `carrinho_idcarrinho` INT NOT NULL,
+  `produto_idproduto` INT NOT NULL,
+  `quantidade` INT NOT NULL,
+  PRIMARY KEY (`carrinho_idcarrinho`, `produto_idproduto`),
+  INDEX `fk_carrinho_has_produto_produto1_idx` (`produto_idproduto` ASC),
+  INDEX `fk_carrinho_has_produto_carrinho1_idx` (`carrinho_idcarrinho` ASC),
   CONSTRAINT `fk_carrinho_has_produto_carrinho1`
     FOREIGN KEY (`carrinho_idcarrinho`)
     REFERENCES `carrinhoCompras`.`carrinho` (`idcarrinho`)
@@ -138,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`carrinho_has_produto` (
     REFERENCES `carrinhoCompras`.`produto` (`idproduto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB
 
 
 -- -----------------------------------------------------
