@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	include_once 'head.html';
+	include_once '../App/Controller/ListController.php';
 	include_once '../App/Controller/ClienteController.php';
 
 	$user = new ClienteController();
@@ -27,10 +28,10 @@
 								<li><a href="shop.php">Produtos</a></li>
 								<?php
 									if ($result == true) {
-										echo '<li><a href="list.php"> Seus Produtos </a></li>';
+										echo '<li class="active"><a href="list.php"> Seus Produtos </a></li>';
 
 										echo '
-											<li class="active"><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
+											<li><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
 											<li><a href="../App/Controller/logout.php"> Sair </a></li>';
 									}else{
 										echo '<li><a href="login.php"> Login/Cadastre-se </a></li>';
@@ -80,56 +81,36 @@
 								<span>Total</span>
 							</div>
 						</div>
-						<div class="product-cart">
-							<div class="one-forth">
-								<div class="product-img" style="background-image: url(images/item-7.jpg);">
+						<?php
+							$pCarrinho = ListController::selectList();
+							foreach($pCarrinho as $produto) {
+								echo '<div class="product-cart">
+								<div class="one-forth">
+									<div class="product-img" style="background-image: url(images/'.$produto[2].'.jpg);">
+									</div>
+									<div class="display-tc">
+										<h3>'.$produto[0].'</h3>
+									</div>
 								</div>
-								<div class="display-tc">
-									<h3>Nome do produto</h3>
+								<div class="one-eight text-center">
+									<div class="display-tc">
+										<span class="price">'.$produto[1].'</span>
+									</div>
 								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$68.00</span>
+								<div class="one-eight text-center">
+									<div class="display-tc">
+										<input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
+									</div>
 								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<form action="#">
-										<input type="text" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-									</form>
+								<div class="one-eight text-center">
+									<div class="display-tc">
+										<span class="price">$120.00</span>
+									</div>
 								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$120.00</span>
-								</div>
-							</div>
-						</div>
-						<div class="product-cart">
-							<div class="one-forth">
-								<div class="product-img" style="background-image: url(images/item-8.jpg);">
-								</div>
-								<div class="display-tc">
-									<h3>Nome do produto</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$68.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$120.00</span>
-								</div>
-							</div>
-						</div>
+							</div>';  
+
+							}
+						?>
 					</div>
 				</div>
 		</div>
