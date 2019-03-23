@@ -173,6 +173,13 @@ insert into produto (nome, descricao, valor, imagem) values ('Conjunto Yellow', 
 insert into produto (nome, descricao, valor, imagem) values ('Colegial 2000', 'Blusa rose + Saia Xadrez', 146.90, 13);
 insert into produto (nome, descricao, valor, imagem) values ('Gotic', 'Blusa + Colete + Calça', 223.90, 21);
 insert into produto (nome, descricao, valor, imagem) values ('Vestido Azul Floral', 'Vestido social', 88.90, 23);
+insert into produto (nome, descricao, valor, imagem) values ('Moletom Preto Feminino', '', 59.90, 2);
+insert into produto (nome, descricao, valor, imagem) values ('Lunk Social', '', 69.50, 24);
+insert into produto (nome, descricao, valor, imagem) values ('Blusinha Talk', '', 22.90, 29);
+insert into produto (nome, descricao, valor, imagem) values ('Short Lok', '', 15.90, 18);
+insert into produto (nome, descricao, valor, imagem) values ('Blusão', '', 24.90, 22);
+insert into produto (nome, descricao, valor, imagem) values ('Tenis Nike Branco', '', 150.00, 11);
+insert into produto (nome, descricao, valor, imagem) values ('Vestido Branco', '', 99.90, 10);
 
 Insert into estado (Uf, Nome) values ('AC', 'Acre');
 Insert into estado (Uf, Nome) values ('AL', 'Alagoas');
