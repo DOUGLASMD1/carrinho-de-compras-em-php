@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Arquivo que vai adicionar todos os produtos selecionados pelo cliente no carrinho;
+ * Primeiramente é verificado se o cliente está logado;
+ * Caso esteja, recuperamos o cpf do usuario logado, e armazenamos as infomações do produto selecionado no banco
+ */
+
 session_start();
 include_once '../../DataBase/conexao.php';
 include_once 'ClienteController.php';
