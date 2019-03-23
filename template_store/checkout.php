@@ -81,7 +81,7 @@
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Pagamento</h1>
-				   					<h2 class="bread"><span><a href="index.html">Home</a></span> <span><a href="cart.html">Carrinho de compras</a></span> <span>Pagamento</span></h2>
+				   					<h2 class="bread"><span><a href="index.php">Home</a></span> <span><a href="cart.php">Carrinho de compras</a></span> <span>Pagamento</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
