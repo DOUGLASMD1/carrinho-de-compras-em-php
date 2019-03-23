@@ -1,4 +1,5 @@
 <?php
+
 include_once '../DataBase/conexao.php';
 
 class ListController {
@@ -11,7 +12,7 @@ class ListController {
         INNER JOIN carrinho ON carrinho.idcarrinho = finalizacompra.carrinho_idcarrinho 
         INNER JOIN carrinho_has_produto ON carrinho.idcarrinho = carrinho_has_produto.carrinho_idcarrinho 
         INNER JOIN produto ON produto.idproduto = carrinho_has_produto.produto_idproduto 
-        WHERE carrinho.cliente_cpf ='.$_SESSION["user_cpf"].' AND finalizaCompra.status = "CL";');
+        WHERE carrinho.cliente_cpf = "'.$_SESSION["user_cpf"].'" AND finalizaCompra.status = "CL";');
         $stmt->execute();
         $pCarrinho = $stmt->fetchAll();
         $stmt = null;

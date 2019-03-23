@@ -30,7 +30,7 @@
 								<li><a href="shop.php">Produtos</a></li>
 								<?php
 									if ($result == true) {
-
+										echo '<li><a href="list.php"> Seus Produtos </a></li>';
 										echo '
 											<li class="active"><a href="cart.php"><i class="icon-shopping-cart"></i> Carrinho </a></li>
 											<li><a href="../App/Controller/logout.php"> Sair </a></li>';
@@ -47,14 +47,14 @@
 		<aside id="colorlib-hero" class="breadcrumbs">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/cover-img-1.jpg);">
+			   	<li style="background-image: url(images/3.jpg);">
 			   		<div class="overlay"></div>
 			   		<div class="container-fluid">
 			   			<div class="row">
 				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Finalizado</h1>
-				   					<h2 class="bread"><span><a href="index.html">Home</a></span> <span><a href="cart.html">Carrinho de Compras</a></span> <span>Pagamento</span></h2>
+				   					<h2 class="bread"><span><a href="index.php">Home</a></span> <span><a href="cart.php">Carrinho de Compras</a></span> <span>Pagamento</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
