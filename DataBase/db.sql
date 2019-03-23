@@ -131,6 +131,26 @@ CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`finalizaCompra` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `carrinhoCompras`.`pedidoConcluido`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carrinhoCompras`.`pedidoConcluido` (
+  `idpedidoConcluido` INT NOT NULL AUTO_INCREMENT,
+  `cliente_cpf` VARCHAR(30) NOT NULL,
+  `nomeProduto` VARCHAR(45) NOT NULL,
+  `valorProduto` FLOAT NOT NULL,
+  `imagemProduto` INT NOT NULL,
+  `qtdProduto` INT NOT NULL,
+  PRIMARY KEY (`idpedidoConcluido`, `cliente_cpf`),
+  INDEX `fk_pedidoConcluido_cliente1_idx` (`cliente_cpf` ASC),
+  CONSTRAINT `fk_pedidoConcluido_cliente1`
+    FOREIGN KEY (`cliente_cpf`)
+    REFERENCES `carrinhoCompras`.`cliente` (`cpf`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 insert into produto (nome, descricao, valor, imagem) values ('Camisa Branca Aesthetic', 'Camisa algodao, branca lisa', 56.90, 14);
 insert into produto (nome, descricao, valor, imagem) values ('Palito', 'Conjunto Terno + Calca', 250.90, 17);
 insert into produto (nome, descricao, valor, imagem) values ('Conjunto Yellow', 'Moletom e calça algodao', 346.90, 16);
@@ -5745,6 +5765,7 @@ Insert into municipio (Codigo, Nome, estado_Uf) values ('5222054','Vicentinópol
 Insert into municipio (Codigo, Nome, estado_Uf) values ('5222203','Vila Boa', 'GO');
 Insert into municipio (Codigo, Nome, estado_Uf) values ('5222302','Vila Propício', 'GO');
 Insert into municipio (Codigo, Nome, estado_Uf) values ('5300108','Brasília', 'DF');
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
