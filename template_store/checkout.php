@@ -14,7 +14,23 @@
 	$stmt->execute();
 	
 	$resultado_estados = $stmt->fetchAll();
-	
+	$cpf = $_SESSION["user_cpf"];
+	$stmt2 = $conn->prepare('
+		SELECT produto.nome, produto.valor, produto.imagem, produto.idproduto, gerou.quantidade FROM produto 
+		INNER JOIN
+			(SELECT carrinho_has_produto.produto_idproduto, carrinho_has_produto.quantidade FROM carrinho_has_produto
+				INNER JOIN produto ON carrinho_has_produto.produto_idproduto = produto.idproduto
+				INNER JOIN carrinho ON carrinho_has_produto.carrinho_idcarrinho = carrinho.idcarrinho 
+		        WHERE carrinho.cliente_cpf = "'.$cpf.'"
+			GROUP BY carrinho_has_produto.produto_idproduto) as gerou 
+
+		ON produto.idproduto = gerou.produto_idproduto
+    	GROUP BY produto.nome;');
+
+	$total = 0;
+	$stmt2->execute();
+		
+	$resultado_carrinho = $stmt2->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -91,74 +107,74 @@
 						</div>
 					</div>
 				</div>
+				<form method="post" action="../App/Controller/insertFinalizado.php" class="colorlib-form">
 				<div class="row">
 					<div class="col-md-7">
-						<form method="post" class="colorlib-form">
+						
 							<h2>Endereço para entrega</h2>
-		              	<div class="row">
-			               <div class="col-md-12">
-			                  <div class="form-group">
-			                  	<label for="country">Estado</label>
-			                    <div class="form-field">
-			                     	<i class="icon icon-arrow-down3"></i>
-			                     	<select class="form-control" name="id_estado" id="id_estado" required>
-										<option value=""> Selecione...</option>
-										 
-											<?php foreach( $resultado_estados as $row ) { 
-												echo '<option value="'.$row['Uf'].'">'.$row['Nome'].'</option>';
-											} ?>
+			              	<div class="row">
+				               <div class="col-md-12">
+				                  <div class="form-group">
+				                  	<label for="country">Estado</label>
+				                    <div class="form-field">
+				                     	<i class="icon icon-arrow-down3"></i>
+				                     	<select class="form-control" name="id_estado" id="id_estado" required>
+											<option value=""> Selecione...</option>
+											 
+												<?php foreach( $resultado_estados as $row ) { 
+													echo '<option value="'.$row['Uf'].'">'.$row['Nome'].'</option>';
+												} ?>
 
-									</select>			                 
-			                    </div>
-			                </div>
-			                  <div class="form-group">
-			                  	<label for="id_cidade">Municipio</label>
-			                     <div class="form-field">
-			                     	<i class="icon icon-arrow-down3"></i>
-			                     	<select class="form-control" name="id_cidade" id="id_cidade" required>
-										<option value="">Selecione...</option>
-									</select>			                 
-			                     </div>
+										</select>			                 
+				                    </div>
+				                </div>
+				                  <div class="form-group">
+				                  	<label for="id_cidade">Municipio</label>
+				                     <div class="form-field">
+				                     	<i class="icon icon-arrow-down3"></i>
+				                     	<select class="form-control" name="id_cidade" id="id_cidade" required>
+											<option value="">Selecione...</option>
+										</select>			                 
+				                     </div>
 
-			                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-								<script type="text/javascript">
-									$('#id_estado').change(function (){
-										var valor = document.getElementById("id_estado").value;
-										$.get("exibe_cidade.php?search=" + valor, function (data) {
-											$("#id_cidade").find("option").remove();
-											$('#id_cidade').append(data);
+				                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+									<script type="text/javascript">
+										$('#id_estado').change(function (){
+											var valor = document.getElementById("id_estado").value;
+											$.get("exibe_cidade.php?search=" + valor, function (data) {
+												$("#id_cidade").find("option").remove();
+												$('#id_cidade').append(data);
+											});
 										});
-									});
-								</script>
-			                  </div>
-			               </div>
-			            </div>
-		            </form>
+									</script>
+				                  </div>
+				               </div>
+				            </div>
+		            	
 					</div>
 					<div class="col-md-5">
 						<div class="cart-detail">
 							<h2>Total</h2>
 							<ul>
-								<li>
-									<span>Subtotal</span> <span>$100.00</span>
-									<ul>
-										<li><span>1 x Nome Produto</span> <span>$99.00</span></li>
-										<li><span>1 x Nome Produto</span> <span>$78.00</span></li>
-									</ul>
-								</li>
-								<li><span>Desconto</span> <span>$0.00</span></li>
-								<li><span>Completo</span> <span>$180.00</span></li>
+								<?php 
+									$count = 0;
+									$total = 0;
+									foreach( $resultado_carrinho as $row ) { 
+										$count = $row[1]*$row[4];
+										$total = $count + $total;
+										echo '
+										<li>
+											<ul>
+												<li><span>'.$row[4].' x '.$row[0].'</span> <span>R$ '.$row[1]*$row[4].'</span></li>
+											</ul>
+										</li>';
+									}
+										echo '<li><span>Total</span> <span>R$ '.$total.'</span></li>';
+									?>
 							</ul>
 						</div>
 						<div class="cart-detail">
 							<h2>Metodo de Pagamento</h2>
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="radio">
-									   <label><input type="radio" name="optradio">Direto site banco</label>
-									</div>
-								</div>
-							</div>
 							<div class="form-group">
 								<div class="col-md-12">
 									<div class="radio">
@@ -173,21 +189,16 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="checkbox">
-									   <label><input type="checkbox" value="">Li e aceito os termos e condições</label>
-									</div>
-								</div>
-							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<p><a href="order-complete.php" class="btn btn-primary">Finalizar</a></p>
+								<p><input type="submit" style="background-color: green !important" class="btn btn-primary" value="Finalizar"></input></p>
+								<p><a href="cart.php" class="btn btn-primary">Voltar para o carrinho </a></p>
 							</div>
 						</div>
 					</div>
 				</div>
+			</form>
 			</div>
 		</div>
 
