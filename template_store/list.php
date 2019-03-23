@@ -99,12 +99,12 @@
 								</div>
 								<div class="one-eight text-center">
 									<div class="display-tc">
-										<input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
+										<span class="price">'.$produto[3].'</span>
 									</div>
 								</div>
 								<div class="one-eight text-center">
 									<div class="display-tc">
-										<span class="price">$120.00</span>
+										<span class="price">'.$produto[3]*$produto[1].'</span>
 									</div>
 								</div>
 							</div>';  
