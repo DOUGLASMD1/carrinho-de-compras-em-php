@@ -1,5 +1,5 @@
 <?php
 
-echo "To com Sono";
+header('Location: template_store/index.php');
 
 ?>
