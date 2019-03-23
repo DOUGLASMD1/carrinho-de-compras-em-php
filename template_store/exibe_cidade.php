@@ -12,7 +12,8 @@
 	
 	$stmt->execute();
 	$resultado_cidades = $stmt->fetchAll();
+	
 	foreach( $resultado_cidades as $row_cidade ) { 
-		echo '<option value="'.$row_cidade['id'].'">'.$row_cidade['Nome'].'</option>';
+		echo '<option value="'.$row_cidade['Id'].'">'.$row_cidade['Nome'].'</option>';
 	}
 ?>

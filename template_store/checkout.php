@@ -31,6 +31,7 @@
 	$stmt2->execute();
 		
 	$resultado_carrinho = $stmt2->fetchAll();
+
 ?>
 
 <!DOCTYPE HTML>
@@ -133,7 +134,7 @@
 				                     <div class="form-field">
 				                     	<i class="icon icon-arrow-down3"></i>
 				                     	<select class="form-control" name="id_cidade" id="id_cidade" required>
-											<option value="">Selecione...</option>
+											<option value="#id_cidade">Selecione...</option>
 										</select>			                 
 				                     </div>
 
@@ -165,11 +166,11 @@
 										echo '
 										<li>
 											<ul>
-												<li><span>'.$row[4].' x '.$row[0].'</span> <span>R$ '.$row[1]*$row[4].'</span></li>
+												<li><span>'.$row[4].' x '.$row[0].'</span> <span>R$ '.number_format($row[1]*$row[4],2,",",".").'</span></li>
 											</ul>
 										</li>';
 									}
-										echo '<li><span>Total</span> <span>R$ '.$total.'</span></li>';
+										echo '<li><span>Total</span> <span>R$ '.number_format($total,2,",",".").'</span></li>';
 									?>
 							</ul>
 						</div>
@@ -192,7 +193,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<p><input type="submit" style="background-color: green !important" class="btn btn-primary" value="Finalizar"></input></p>
+								<p><input type="submit" style="background-color: green !important" class="btn btn-primary" value="Finalizar" name="enviar"></input></p>
 								<p><a href="cart.php" class="btn btn-primary">Voltar para o carrinho </a></p>
 							</div>
 						</div>

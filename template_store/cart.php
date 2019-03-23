@@ -138,26 +138,27 @@
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<span class="price" for="id_valor" id="id_valor">'.$row[1].'</span>
+											<span class="price" for="id_valor" id="id_valor">R$ '.
+											number_format($row[1],2,",",".").'</span>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
 											<form method="post" action="../App/Controller/updateQtd.php">
-												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control input-number text-center" value="'.$row[4].'" min="1" max="100"> 
-												<input style="visibility: hidden; width:05%;height:2%;" type="number" name="idproduto" value="'.$row[3].'"> <br>
+												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control  input-number text-center" value="'.$row[4].'" min="1" max="100"> 
+												<input style="visibility: hidden; width:2%;height:2%;" type="number" name="idproduto" value="'.$row[3].'"> <br>
 												<button class="btn btn-primary"> alterar </button>
 											</form>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<span for="id_total" class="price" id="id_total" name="id_total" > '.$row[1]*$row[4].'</span>
+											<span for="id_total" class="price" id="id_total" name="id_total" >R$ '.number_format($row[1]*$row[4],2,",",".").'</span>
 										</div>
 									</div>
 									<div class="one-eight text-center">
 										<div class="display-tc">
-											<a href="../App/Controller/delete.php?produto='.$row[3].'" class="closed"></a>
+											<a href="../App/Controller/delete.php?produto='.$row[3].'" class="closed" style="background-color: #FFC300"></a>
 										</div>
 									</div>
 								</div>
@@ -184,7 +185,7 @@
 								<div class="col-md-3 col-md-push-1 text-center">
 									<div class="total">
 										<div class="grand-total">
-											<p><span><strong>Total:</strong></span> <span>R$ <?php echo $total;
+											<p><span><strong>Total:</strong></span> <span>R$ <?php echo number_format($total,2,",",".");
 							?></span></p>
 										</div>
 									</div>
