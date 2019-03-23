@@ -13,11 +13,12 @@ if($result == true){
     $stmt = $conexao->prepare('SELECT idcarrinho FROM carrinho WHERE carrinho.cliente_cpf ="'.$_SESSION["user_cpf"].'";');
     $stmt->execute();
     $resultado = $stmt->fetch();
-    
+    $qts = 1;
     if($resultado == true){
-        $stmt = $conexao->prepare("INSERT INTO carrinho_has_produto(carrinho_idcarrinho, produto_idproduto) VALUES(:carrinho, :produto);");
+        $stmt = $conexao->prepare("INSERT INTO carrinho_has_produto(carrinho_idcarrinho, produto_idproduto, quantidade) VALUES(:carrinho, :produto, :quantidade);");
         $stmt->bindParam(':carrinho', $resultado[0]);
         $stmt->bindParam(':produto', $produto);
+        $stmt->bindParam(':quantidade', $qts);
         $stmt->execute();
         $stmt = null;    
     }else{
@@ -26,9 +27,10 @@ if($result == true){
         $stmt->execute();
         $carrinhoId = $conexao->lastInsertId();
 
-        $stmt = $conexao->prepare("INSERT INTO carrinho_has_produto(carrinho_idcarrinho, produto_idproduto) VALUES(:carrinho, :produto);");
+        $stmt = $conexao->prepare("INSERT INTO carrinho_has_produto(carrinho_idcarrinho, produto_idproduto, quantidade) VALUES(:carrinho, :produto, :equantidade);");
         $stmt->bindParam(':carrinho', $carrinhoId);
         $stmt->bindParam(':produto', $produto);
+        $stmt->bindParam(':equantidade', $qts);
         $stmt->execute();
         $stmt = null;  
     }

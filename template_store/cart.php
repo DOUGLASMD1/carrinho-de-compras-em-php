@@ -1,12 +1,32 @@
 <?php
 	session_start();
 	include_once 'head.html';
+	include_once '../DataBase/conexao.php';
 	include_once '../App/Controller/ClienteController.php';
 
 	$user = new ClienteController();
-
 	$result = $user->isLoggedIn();
 	
+	$cpf = $_SESSION["user_cpf"];
+	$conn = new Conexao();
+	$conn = $conn->conexao();
+	$stmt = $conn->prepare('
+		SELECT produto.nome, produto.valor, produto.imagem, produto.idproduto, gerou.quantidade FROM produto 
+
+		INNER JOIN
+			(SELECT carrinho_has_produto.produto_idproduto, carrinho_has_produto.quantidade FROM carrinho_has_produto
+				INNER JOIN produto ON carrinho_has_produto.produto_idproduto = produto.idproduto
+				INNER JOIN carrinho ON carrinho_has_produto.carrinho_idcarrinho = carrinho.idcarrinho 
+		        WHERE carrinho.cliente_cpf = "'.$cpf.'"
+			GROUP BY carrinho_has_produto.produto_idproduto) as gerou 
+
+		ON produto.idproduto = gerou.produto_idproduto
+    	GROUP BY produto.nome;');
+
+	$total = 0;
+	$stmt->execute();
+		
+	$resultado_carrinho = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -101,66 +121,54 @@
 								<span>Remover</span>
 							</div>
 						</div>
-						<div class="product-cart">
-							<div class="one-forth">
-								<div class="product-img" style="background-image: url(images/item-7.jpg);">
+
+						<?php 
+						$count = 0;
+						$total = 0;
+						foreach( $resultado_carrinho as $row ) { 
+							echo '
+											
+								<div class="product-cart">
+									<div class="one-forth">
+										<div class="product-img" style="background-image: url(images/'.$row[2].'.jpg);">
+										</div>
+										<div class="display-tc">
+											<h3 id="nome">'.$row[0].'</h3>
+										</div>
+									</div>
+									<div class="one-eight text-center">
+										<div class="display-tc">
+											<span class="price" for="id_valor" id="id_valor">'.$row[1].'</span>
+										</div>
+									</div>
+									<div class="one-eight text-center">
+										<div class="display-tc">
+											<form method="post" action="../App/Controller/updateQtd.php">
+												<input type="number" for="id_quantidade" name="id_quantidade" id="id_quantidade" class="form-control input-number text-center" value="'.$row[4].'" min="1" max="100"> 
+												<input style="visibility: hidden; width:05%;height:2%;" type="number" name="idproduto" value="'.$row[3].'"> <br>
+												<button class="btn btn-primary"> alterar </button>
+											</form>
+										</div>
+									</div>
+									<div class="one-eight text-center">
+										<div class="display-tc">
+											<span for="id_total" class="price" id="id_total" name="id_total" > '.$row[1]*$row[4].'</span>
+										</div>
+									</div>
+									<div class="one-eight text-center">
+										<div class="display-tc">
+											<a href="../App/Controller/delete.php?produto='.$row[3].'" class="closed"></a>
+										</div>
+									</div>
 								</div>
-								<div class="display-tc">
-									<h3>Nome do produto</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$68.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<form action="#">
-										<input type="text" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-									</form>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$120.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
-							</div>
-						</div>
-						<div class="product-cart">
-							<div class="one-forth">
-								<div class="product-img" style="background-image: url(images/item-8.jpg);">
-								</div>
-								<div class="display-tc">
-									<h3>Nome do produto</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$68.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$120.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
-							</div>
-						</div>
+							';
+
+							$count = $row[1]*$row[4];
+							$total = $count + $total;
+
+						} 
+					?>
+
 					</div>
 				</div>
 				<div class="row">
@@ -175,12 +183,9 @@
 								</div>
 								<div class="col-md-3 col-md-push-1 text-center">
 									<div class="total">
-										<div class="sub">
-											<p><span>Subtotal:</span> <span>$200.00</span></p>
-											<p><span>Desconto:</span> <span>$45.00</span></p>
-										</div>
 										<div class="grand-total">
-											<p><span><strong>Total:</strong></span> <span>$450.00</span></p>
+											<p><span><strong>Total:</strong></span> <span>R$ <?php echo $total;
+							?></span></p>
 										</div>
 									</div>
 
