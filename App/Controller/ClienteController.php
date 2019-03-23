@@ -1,4 +1,8 @@
 <?php
+/**
+ * Classe que contém as funcionalidades de retornar todos os clientes, cadastro de clientes, 
+ * login, sair do sistema e verificar se um cliente está logado.
+ */
 
     class ClienteController {
 
