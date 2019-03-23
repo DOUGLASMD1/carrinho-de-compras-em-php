@@ -108,7 +108,7 @@
 								</div>
 								<div class="one-eight text-center">
 									<div class="display-tc">
-										<span class="price">R$ '.number_format($produto[3]*$produto[1]).'</span>
+										<span class="price">R$ '.number_format($produto[3]*$produto[1],2,",",".").'</span>
 									</div>
 								</div>
 							</div>';  
