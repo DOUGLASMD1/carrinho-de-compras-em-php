@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Este arquivo retorna todos os pedidos concluidos do cliente.
+ */
 include_once '../DataBase/conexao.php';
 
 class ListController {

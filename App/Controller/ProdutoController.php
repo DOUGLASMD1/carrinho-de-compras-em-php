@@ -1,4 +1,7 @@
 <?php
+/**
+ * Arquivo que retorna todos os produtos disponiveis do db
+ */
 include_once '../DataBase/conexao.php';
 
 class ProdutoController {
