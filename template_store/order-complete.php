@@ -6,6 +6,10 @@
 	$user = new ClienteController();
 
 	$result = $user->isLoggedIn();
+
+	if($result == false){
+		header('Location: login.php');
+	}
 	
 ?>
 

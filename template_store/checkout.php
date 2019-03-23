@@ -7,6 +7,10 @@
 	$user = new ClienteController();
 	$result = $user->isLoggedIn();
 
+	if($result == false){
+		header('Location: login.php');
+	}
+
 	$conn = new Conexao();
 	$conn = $conn->conexao();
 	$stmt = $conn->prepare('SELECT * FROM estado');

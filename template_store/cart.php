@@ -7,6 +7,10 @@
 	$user = new ClienteController();
 	$result = $user->isLoggedIn();
 	
+	if($result == false){
+		header('Location: login.php');
+	}
+
 	$cpf = $_SESSION["user_cpf"];
 	$conn = new Conexao();
 	$conn = $conn->conexao();
