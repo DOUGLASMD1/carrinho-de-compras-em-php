@@ -86,7 +86,7 @@
 										</div>
 										<div class="desc">
 											<h3>'.$produto[1].'</h3>
-											<p class="price"><span>'.round($produto[3],2).'</span></p>
+											<p class="price"><span>R$ '.number_format($produto[3],2,",",".").'</span></p>
 										</div>
 									</div>
 								</div>';	
