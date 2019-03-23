@@ -4,16 +4,23 @@
 	include_once '../DataBase/conexao.php';
 	include_once '../App/Controller/ClienteController.php';
 
+	$conn = new Conexao();
+	$conn = $conn->conexao();
+
 	$user = new ClienteController();
 	$result = $user->isLoggedIn();
 	
+	$stmt4 = $conn->prepare('
+		SELECT * FROM carrinho_has_produto;');
+	$stmt4->execute();
+	$count = 0;
+	$count = $stmt4->rowCount();
+
 	if($result == false){
 		header('Location: login.php');
 	}
 
 	$cpf = $_SESSION["user_cpf"];
-	$conn = new Conexao();
-	$conn = $conn->conexao();
 	$stmt = $conn->prepare('
 		SELECT produto.nome, produto.valor, produto.imagem, produto.idproduto, gerou.quantidade FROM produto 
 
@@ -193,8 +200,14 @@
 							?></span></p>
 										</div>
 									</div>
-
-									<p><a href="checkout.php" class="btn btn-primary"> Proximo </a></p>
+									<?php
+										if ($count == 0) {
+											echo '<p><a class="btn btn-primary"   style="opacity: 0.5;
+  filter: alpha(opacity=50)"> Proximo </a disabled></p>';
+										}else{
+											echo '<p><a href="checkout.php?proximo=true&carrinho=true" class="btn btn-primary"> Proximo </a></p>';
+										}
+									?>
 								</div>
 							</div>
 						</div>

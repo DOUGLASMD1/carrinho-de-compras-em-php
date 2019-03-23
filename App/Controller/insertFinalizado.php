@@ -56,5 +56,5 @@
     $stmt5->execute();
     $stmt5 = null;
 
-    header('Location: ../../template_store/order-complete.php'); 
+    header('Location: ../../template_store/order-complete.php?enviar="'.$_POST["enviar"].'"'); 
 ?>

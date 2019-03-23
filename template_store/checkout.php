@@ -6,11 +6,6 @@
 
 	$user = new ClienteController();
 	$result = $user->isLoggedIn();
-
-	if($result == false){
-		header('Location: login.php');
-	}
-
 	$conn = new Conexao();
 	$conn = $conn->conexao();
 	$stmt = $conn->prepare('SELECT * FROM estado');
@@ -33,9 +28,13 @@
 
 	$total = 0;
 	$stmt2->execute();
-		
 	$resultado_carrinho = $stmt2->fetchAll();
 
+	if($result == false){
+		header('Location: login.php');
+	}else if(!isset($_GET['proximo'])){
+		header('Location: cart.php');
+	}
 ?>
 
 <!DOCTYPE HTML>

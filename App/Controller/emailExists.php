@@ -12,15 +12,12 @@
         $conexao = $conexao->conexao();
         $stmt = $conexao->prepare('SELECT * FROM cliente WHERE email = "'.$email.'"');
         $stmt->execute();
-		var_dump($stmt);
-
+		
 		$stmt2 = $conexao->prepare('SELECT * FROM cliente WHERE cpf = "'.$cpf.'"');
         $stmt2->execute();
-        var_dump($stmt2);
-
+       
         $count2 = $stmt2->rowCount();
 		$count = $stmt->rowCount();
-		var_dump($count2, $count);
 		
 	    if($count > 0){
 	        echo "

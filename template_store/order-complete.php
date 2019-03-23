@@ -1,16 +1,27 @@
 <?php
 	session_start();
 	include_once 'head.html';
+	include_once '../DataBase/conexao.php';
 	include_once '../App/Controller/ClienteController.php';
 
 	$user = new ClienteController();
+	$conn = new Conexao();
+	$conn = $conn->conexao();
 
 	$result = $user->isLoggedIn();
+
+	$stmt4 = $conn->prepare('
+		SELECT * FROM carrinho_has_produto;');
+	$stmt4->execute();
+	$count = 0;
+	$count = $stmt4->rowCount();
 
 	if($result == false){
 		header('Location: login.php');
 	}
-	
+	else if(!isset($_GET['enviar'])){
+		header('Location: cart.php');
+	}
 ?>
 
 <!DOCTYPE HTML>
