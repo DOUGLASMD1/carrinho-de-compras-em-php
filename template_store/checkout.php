@@ -177,23 +177,7 @@
 									?>
 							</ul>
 						</div>
-						<div class="cart-detail">
-							<h2>Metodo de Pagamento</h2>
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="radio">
-									   <label><input type="radio" name="optradio">Boleto Pagamento</label>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="radio">
-									   <label><input type="radio" name="optradio">Cartao de Credito Paypal</label>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 						<div class="row">
 							<div class="col-md-12">
 								<p><input type="submit" style="background-color: green !important" class="btn btn-primary" value="Finalizar" name="enviar"></input></p>

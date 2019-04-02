@@ -29,7 +29,7 @@
 						<div class="form-group">
 							<div align="left" class="col-md-12">
 								<label for="email">Email</label>
-								<input type="text" id="email" name="email" class="form-control" placeholder="Digite seu email" required>
+								<input type="text" id="email" name="email" class="form-control" placeholder="Digite seu email" pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$" required>
 							</div>	
 							
 							<div align="left" class="col-md-12">
